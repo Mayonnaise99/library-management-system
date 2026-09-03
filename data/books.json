@@ -1,0 +1,37 @@
+{
+  "B101": {
+    "name": "Python Programming",
+    "author": "Mark Lutz",
+    "rack": "L1",
+    "total_books": 15,
+    "available_books": 15
+  },
+  "B102": {
+    "name": "Java Programming",
+    "author": "Herbert Schildt",
+    "rack": "R2",
+    "total_books": 19,
+    "available_books": 19
+  },
+  "B103": {
+    "name": "A Dangerous place",
+    "author": "D.P. Moynihan",
+    "rack": "U1",
+    "total_books": 8,
+    "available_books": 8
+  },
+  "B108": {
+    "name": "Gulliver’s Travels",
+    "author": "Jonathan Swift",
+    "rack": "M4",
+    "total_books": 3,
+    "available_books": 3
+  },
+  "B106": {
+    "name": "The sandman",
+    "author": "neil gaiman",
+    "rack": "U2",
+    "total_books": 4,
+    "available_books": 4
+  }
+}
