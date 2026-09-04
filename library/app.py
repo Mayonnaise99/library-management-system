@@ -13,9 +13,7 @@ class LibraryApp:
 
     def __init__(self):
 
-        self.service = LibraryService(
-            JsonStore("data")
-        )
+        self.service = LibraryService(JsonStore("data"))
 
     # ==================================================
     # MAIN LOOP
@@ -27,9 +25,7 @@ class LibraryApp:
 
             self.show_menu()
 
-            choice = input(
-                "Enter your choice: "
-            ).strip()
+            choice = input("Enter your choice: ").strip()
 
             try:
 
@@ -103,11 +99,10 @@ class LibraryApp:
     @staticmethod
     def show_menu():
 
-        print("\n" + "=" * 50)
+        print()
+        print("=" * 50)
 
-        print(
-            "      LIBRARY MANAGEMENT SYSTEM"
-        )
+        print("      LIBRARY MANAGEMENT SYSTEM")
 
         print("=" * 50)
 
@@ -141,36 +136,19 @@ class LibraryApp:
 
     def register_student(self):
 
-        student_id = input(
-            "Enter Student ID: "
-        )
+        student_id = input("Enter Student ID: ")
 
-        student_name = input(
-            "Enter Student Name: "
-        )
+        student_name = input("Enter Student Name: ")
 
-        student = self.service.register_student(
-            student_id,
-            student_name
-        )
+        student = self.service.register_student(student_id,student_name)
         print()
-        print(
-            "Student Registration Successful!"
-        )
+        print("Student Registration Successful!")
 
-        print(
-            "Student ID:",
-            student_id.strip().upper()
-        )
+        print("Student ID:",student_id.strip().upper())
 
-        print(
-            "Student Name:",
-            student["name"]
-        )
+        print("Student Name:",student["name"])
 
-        print(
-            "Membership: Active"
-        )
+        print("Membership: Active")
 
     # ==================================================
     # 2. ADD BOOK
@@ -188,19 +166,12 @@ class LibraryApp:
 
             input("Enter Rack Number: "),
 
-            input(
-                "Enter Total Number of Books: "
-            )
+            input("Enter Total Number of Books: ")
         )
         print()
-        print(
-            "Book added successfully!"
-        )
+        print("Book added successfully!")
 
-        print(
-            "Book:",
-            book["name"]
-        )
+        print("Book:",book["name"])
 
     # ==================================================
     # 3. SEARCH BOOK
@@ -212,65 +183,34 @@ class LibraryApp:
 
             input("Enter Book Name: "),
 
-            input(
-                "Enter Author Name "
-                "(Press Enter to Skip): "
-            )
+            input("Enter Author Name ""(Press Enter to Skip): ")
         )
 
         if not results:
             print()
-            print(
-                "Book not found in the library."
-            )
+            print("Book not found in the library.")
 
             return
 
         for book_id, book in results:
 
-            issued = (
-                book["total_books"]
-                - book["available_books"]
-            )
+            issued = (book["total_books"]- book["available_books"])
             print()
-            print(
-                "-----------------------------"
-            )
+            print("-----------------------------")
 
-            print(
-                "Book ID        :",
-                book_id
-            )
+            print("Book ID        :",book_id)
 
-            print(
-                "Book Name      :",
-                book["name"]
-            )
+            print("Book Name      :",book["name"])
 
-            print(
-                "Author         :",
-                book["author"]
-            )
+            print("Author         :",book["author"])
 
-            print(
-                "Rack Number    :",
-                book["rack"]
-            )
+            print("Rack Number    :",book["rack"])
 
-            print(
-                "Total Books    :",
-                book["total_books"]
-            )
+            print("Total Books    :",book["total_books"])
 
-            print(
-                "Issued Books   :",
-                issued
-            )
+            print("Issued Books   :",issued)
 
-            print(
-                "Available Books:",
-                book["available_books"]
-            )
+            print("Available Books:",book["available_books"])
 
             print(
                 "Status         :",
@@ -281,9 +221,7 @@ class LibraryApp:
                 )
             )
 
-            print(
-                "-----------------------------"
-            )
+            print("-----------------------------")
 
     # ==================================================
     # 4. ISSUE BOOK
@@ -291,67 +229,33 @@ class LibraryApp:
 
     def issue_book(self):
 
-        student_id = input(
-            "Enter Student ID: "
-        )
+        student_id = input("Enter Student ID: ")
 
-        current = self.service.current_borrowed(
-            student_id
-        )
+        current = self.service.current_borrowed(student_id)
 
         student_key = student_id.strip().upper()
 
-        student_name = self.service.students[
-            student_key
-        ]["name"]
+        student_name = self.service.students[student_key]["name"]
         print()
-        print(
-            "Student Name:",
-            student_name
-        )
+        print("Student Name:",student_name)
 
-        print(
-            "Currently Borrowed Books:",
-            len(current)
-        )
+        print("Currently Borrowed Books:", len(current))
 
-        book_id = input(
-            "Enter Book ID: "
-        )
+        book_id = input("Enter Book ID: ")
 
-        issue_date = input(
-            "Enter Issue Date (DD-MM-YYYY): "
-        )
+        issue_date = input("Enter Issue Date (DD-MM-YYYY): ")
 
-        book = self.service.issue_book(
-            student_id,
-            book_id,
-            issue_date
-        )
+        book = self.service.issue_book(student_id,book_id,issue_date)
         print()
-        print(
-            "Book issued successfully!"
-        )
+        print("Book issued successfully!")
 
-        print(
-            "Book Name:",
-            book["name"]
-        )
+        print("Book Name:",book["name"])
 
-        print(
-            "Issue Date:",
-            issue_date
-        )
+        print("Issue Date:",issue_date)
 
-        print(
-            "Rack Number:",
-            book["rack"]
-        )
+        print("Rack Number:",book["rack"])
 
-        print(
-            "Available Books:",
-            book["available_books"]
-        )
+        print("Available Books:",book["available_books"])
 
     # ==================================================
     # 5. RETURN BOOK
@@ -359,42 +263,25 @@ class LibraryApp:
 
     def return_book(self):
 
-        student_id = input(
-            "Enter Student ID: "
-        )
+        student_id = input("Enter Student ID: ")
 
-        current = self.service.current_borrowed(
-            student_id
-        )
+        current = self.service.current_borrowed(student_id)
 
         if not current:
 
-            print(
-                "This student has no books to return."
-            )
+            print("This student has no books to return.")
 
             return
         print()
-        print(
-            "Currently Borrowed Books:"
-        )
+        print("Currently Borrowed Books:")
 
         for record in current:
 
-            print(
-                "-",
-                record["book_name"],
-                "| Issue Date:",
-                record["issue_date"]
-            )
+            print("-",record["book_name"],"| Issue Date:",record["issue_date"])
 
-        book_id = input(
-            "Enter Book ID to Return: "
-        )
+        book_id = input("Enter Book ID to Return: ")
 
-        return_date = input(
-            "Enter Return Date (DD-MM-YYYY): "
-        )
+        return_date = input("Enter Return Date (DD-MM-YYYY): ")
 
         record = self.service.return_book(
 
@@ -405,19 +292,11 @@ class LibraryApp:
             return_date
         )
         print()
-        print(
-            "Book returned successfully!"
-        )
+        print("Book returned successfully!")
 
-        print(
-            "Book Name:",
-            record["book_name"]
-        )
+        print("Book Name:",record["book_name"])
 
-        print(
-            "Return Date:",
-            return_date
-        )
+        print("Return Date:",return_date)
 
     # ==================================================
     # 6. STUDENT REPORT
@@ -433,55 +312,31 @@ class LibraryApp:
             )
         )
         print()
-        print(
-            "Student ID:",
-            student_id
-        )
+        print("Student ID:",student_id)
 
-        print(
-            "Student Name:",
-            student["name"]
-        )
+        print("Student Name:",student["name"])
 
-        print(
-            "BOOK HISTORY"
-        )
+        print("BOOK HISTORY")
 
         print("-" * 40)
 
         for record in history:
 
-            print(
-                "Book:",
-                record["book_name"]
-            )
+            print("Book:",record["book_name"])
 
-            print(
-                "Issue Date:",
-                record["issue_date"]
-            )
+            print("Issue Date:",record["issue_date"])
 
             if record["return_date"] == "":
 
-                print(
-                    "Status: Currently Borrowed"
-                )
+                print("Status: Currently Borrowed")
 
             else:
 
-                print(
-                    "Return Date:",
-                    record["return_date"]
-                )
+                print("Return Date:",record["return_date"])
 
-            print(
-                "-" * 40
-            )
+            print("-" * 40)
 
-        print(
-            "Total Borrowing Transactions:",
-            len(history)
-        )
+        print("Total Borrowing Transactions:",len(history))
 
     # ==================================================
     # 7. BOOK AVAILABILITY
@@ -489,69 +344,36 @@ class LibraryApp:
 
     def book_availability_report(self):
 
-        print(
-            "\n" + "=" * 40
-        )
+        print()
+        print("=" * 40)
 
-        print(
-            "BOOK AVAILABILITY REPORT"
-        )
+        print("BOOK AVAILABILITY REPORT")
 
-        print(
-            "=" * 40
-        )
+        print("=" * 40)
 
         if not self.service.books:
 
-            print(
-                "No books available."
-            )
+            print("No books available.")
 
             return
 
-        for book_id, book in (
-            self.service.books.items()
-        ):
+        for book_id, book in (self.service.books.items()):
 
-            issued = (
-                book["total_books"]
-                - book["available_books"]
-            )
+            issued = (book["total_books"]- book["available_books"])
+            print()
+            print("Book ID         :",book_id)
 
-            print(
-                "\nBook ID         :",
-                book_id
-            )
+            print("Book Name       :",book["name"])
 
-            print(
-                "Book Name       :",
-                book["name"]
-            )
+            print("Author          :",book["author"])
 
-            print(
-                "Author          :",
-                book["author"]
-            )
+            print("Rack Number     :",book["rack"])
 
-            print(
-                "Rack Number     :",
-                book["rack"]
-            )
+            print("Total Books     :",book["total_books"])
 
-            print(
-                "Total Books     :",
-                book["total_books"]
-            )
+            print("Issued Books    :",issued)
 
-            print(
-                "Issued Books    :",
-                issued
-            )
-
-            print(
-                "Available Books :",
-                book["available_books"]
-            )
+            print("Available Books :",book["available_books"])
 
             print(
                 "Status          :",
