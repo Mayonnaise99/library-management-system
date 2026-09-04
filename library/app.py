@@ -574,101 +574,55 @@ class LibraryApp:
             )
         )
         print()
-        print(
-            "Book Name:",
-            book["name"]
-        )
+        print("Book Name:",book["name"])
 
-        print(
-            "Author:",
-            book["author"]
-        )
+        print("Author:",book["author"])
 
-        print(
-            "Rack Number:",
-            book["rack"]
-        )
+        print("Rack Number:",book["rack"])
 
-        print(
-            "Total Books:",
-            book["total_books"]
-        )
+        print("Total Books:",book["total_books"])
 
-        print(
-            "Available Books:",
-            book["available_books"]
-        )
+        print("Available Books:",book["available_books"])
         print()
-        print(
-            "BORROWING HISTORY"
-        )
+        print("BORROWING HISTORY")
 
-        print(
-            "-" * 40
-        )
+        print("-" * 40)
 
         for record in history:
 
-            print(
-                "Student:",
-                record["student_name"]
-            )
+            print("Student:",record["student_name"])
 
-            print(
-                "Issue Date:",
-                record["issue_date"]
-            )
+            print("Issue Date:",record["issue_date"])
 
             if record["return_date"] == "":
 
-                print(
-                    "Status: Currently Borrowed"
-                )
+                print("Status: Currently Borrowed")
 
             else:
 
-                print(
-                    "Return Date:",
-                    record["return_date"]
-                )
+                print("Return Date:",record["return_date"])
 
-            print(
-                "-" * 40
-            )
+            print("-" * 40)
 
-        print(
-            "Total Borrowing Transactions:",
-            len(history)
-        )
+        print("Total Borrowing Transactions:",len(history))
 
-        print(
-            "Number of Unique Students:",
-            len(unique_students)
-        )
+        print("Number of Unique Students:",len(unique_students))
 
     # ==================================================
     # 9. DISPLAY ALL STUDENTS
     # ==================================================
 
     def display_all_students(self):
+        print()
+        print("=" * 40)
 
-        print(
-            "\n" + "=" * 40
-        )
+        print("ALL STUDENTS")
 
-        print(
-            "ALL STUDENTS"
-        )
-
-        print(
-            "=" * 40
-        )
+        print("=" * 40)
 
         if not self.service.students:
 
-            print(
-                "No students registered."
-            )
+            print("No students registered.")
 
             return
 
@@ -676,15 +630,9 @@ class LibraryApp:
             self.service.students.items()
         ):
             print()
-            print(
-                "Student ID:",
-                student_id
-            )
+            print("Student ID:",student_id)
 
-            print(
-                "Name:",
-                student["name"]
-            )
+            print("Name:",student["name"])
 
             print(
                 "Membership:",
@@ -695,9 +643,7 @@ class LibraryApp:
                 )
             )
 
-            print(
-                "-" * 35
-            )
+            print("-" * 35)
 
     # ==================================================
     # 10. DISPLAY ALL BOOKS
@@ -705,60 +651,31 @@ class LibraryApp:
 
     def display_all_books(self):
 
-        print(
-            "\n" + "=" * 40
-        )
+        print()
+        print( "=" * 40)
 
-        print(
-            "ALL BOOKS"
-        )
+        print( "ALL BOOKS")
 
-        print(
-            "=" * 40
-        )
+        print("=" * 40)
 
         if not self.service.books:
 
-            print(
-                "No books available."
-            )
+            print( "No books available.")
 
             return
 
-        for book_id, book in (
-            self.service.books.items()
-        ):
+        for book_id, book in (self.service.books.items() ):
             print()
-            print(
-                "Book ID:",
-                book_id
-            )
+            print("Book ID:",book_id)
 
-            print(
-                "Book Name:",
-                book["name"]
-            )
+            print("Book Name:",book["name"])
 
-            print(
-                "Author:",
-                book["author"]
-            )
+            print("Author:",book["author"])
 
-            print(
-                "Rack:",
-                book["rack"]
-            )
+            print("Rack:",book["rack"])
 
-            print(
-                "Total Books:",
-                book["total_books"]
-            )
+            print("Total Books:",book["total_books"])
 
-            print(
-                "Available Books:",
-                book["available_books"]
-            )
+            print("Available Books:",book["available_books"])
 
-            print(
-                "-" * 35
-            )
+            print("-" * 35 )
